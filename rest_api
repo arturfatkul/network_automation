@@ -1,0 +1,11 @@
+import json
+import requests
+
+r = requests.get('http://jsonplaceholder.typicode.com/todos')
+jsondata = r.text
+
+obj = json.loads(jsondata)
+
+for todo in obj:
+    if todo['completed'] == True:
+        print(todo)
