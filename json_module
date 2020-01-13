@@ -1,0 +1,43 @@
+
+#JSON doesn't support serialization of Tuple and Set format, by default JSON serialized Tuple to the List and doesn't support Set at all.
+#You have to use Pickle for Set format or convert it to the List
+
+import json
+
+friends = {"John": [32, 'USA', 8701232323], "Victor": [38, 'Poland', 87771213334]}
+
+
+#Serialize from DICTIONARY to JSON format
+with open('friends.json', 'w') as file:
+    json.dump(friends, file, indent=4)
+
+json_string = json.dumps(friends, indent=4)
+print(json_string)
+
+#Desirialize from JSON to DICTIONARY format
+with open('friends.json', 'r') as file:
+    obj = json.load(file)
+    print(type(obj))
+    print(obj)
+
+json_string = """
+{
+    "John": [
+        32,
+        "USA",
+        8701232323
+    ],
+    "Victor": [
+        38,
+        "Poland",
+        87771213334
+    ]
+}
+"""
+
+obj = json.loads(json_string)
+print(type(obj))
+print(obj)
+
+
+
