@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from ncclient import manager
 
 netconf_template = open("template-ietf-interfaces.xml").read()
