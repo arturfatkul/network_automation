@@ -2,7 +2,7 @@
 
 from ncclient import manager
 
-netconf_template = open("template-ietf-interfaces.xml").read()
+netconf_template = open("netconf_xml_filter.xml").read()
 
 if __name__ == '__main__':
 
