@@ -1,0 +1,24 @@
+from ncclient import manager
+
+netconf_template = open("template-ietf-interfaces.xml").read()
+
+if __name__ == '__main__':
+
+    netconf_payload = netconf_template.format(int_name="GigabitEthernet2",
+                                              int_desc="Configured from NETCONF",
+                                              ip_address="10.12.0.1",
+                                              subnet_mask="255.255.255.0")
+    print("Configuration payload")
+    print("---------------------")
+    print(netconf_payload)
+
+    with manager.connect(host="ios-xe-mgmt.cisco.com", port=10000,
+                         username="developer",
+                         password="C1sco12345",
+                         hostkey_verify=False) as m:
+
+        netconf_reply = m.edit_config(netconf_payload, target="running")
+
+        print(netconf_reply)
+        
+        
